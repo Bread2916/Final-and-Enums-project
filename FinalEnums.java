@@ -97,17 +97,14 @@ public class FinalEnums {
         SubCar carUno = new SubCar();                               //Sedan (BMW)
             carUno.setBrand("BMW");
             carUno.setSpeed(0);
-            carUno.setCarType(CarType.SEDAN);
 
         SubCar carDos = new SubCar();                               //SUV (Ferrari)
             carDos.setBrand("Ferrari");
             carDos.setSpeed(0);
-            carDos.setCarType(CarType.SUV);
 
         SubCar carTres = new SubCar();                              //Truck (Lambo)
             carTres.setBrand("Lamborghini");
             carTres.setSpeed(0);
-            carTres.setCarType(CarType.TRUCK);
 
             while (!exit){
                 System.out.println("\n\n===================WELCOME TO THE BREAD CAR DEALERSHEEP===================\n");
@@ -137,30 +134,30 @@ public class FinalEnums {
                 case 1:
                     System.out.println("\n==================================================");
                     System.out.println("Please choose your car");
-                    System.out.println("1. BMW (Sedan)");
-                    System.out.println("2. Ferrari (SUV)");
-                    System.out.println("3. Lamborghini (Truck)");
+                    System.out.println("1. SEDAN");
+                    System.out.println("2. SUV");
+                    System.out.println("3. TRUCK");
 
-                    int choice2 = 0;
+                    String choice2 = null;
 
                     while (true){
                         System.out.println("==================================================");
                         System.out.print("\nSo... whatcha pick: ");
-                        if (s.hasNextInt()){
-                            choice2 = s.nextInt();
-                            if (choice2 >= 1 && choice2 <= 3){
-                                s.nextLine();
+                        if (s.hasNextLine()){
+                            choice2 = s.nextLine().toUpperCase();
+                            if (choice2.equals("SEDAN") || choice2.equals("SUV") || choice2.equals ("TRUCK")){
                                 break;
                             } else{
-                                System.out.println("Invalid input... 1 - 3 only plez :D");
+                                System.out.println("Invalid input... Sedan, Suv, or Truck only plez :D");
                             }
                         } else {
-                            System.out.println("That ain't an integer cuh...");
+                            System.out.println("That ain't a string cuh...");
                             s.nextLine();
                         }
                     }
                         switch (choice2){
-                            case 1:
+                            case "SEDAN":
+                                carUno.setCarType(CarType.valueOf(choice2));
                                 carUno.displayDetails();
                                 int choice3 = 0;
                                 boolean back = false;
@@ -200,7 +197,8 @@ public class FinalEnums {
                                 }
                                     break;
                                 
-                            case 2:
+                            case "SUV":
+                                carDos.setCarType(CarType.valueOf(choice2));
                                 carDos.displayDetails();
                                 int choice4 = 0;
                                 boolean back1 = false;
@@ -240,7 +238,8 @@ public class FinalEnums {
                                 }
 
                                 break;
-                            case 3:
+                            case "TRUCK":
+                                carTres.setCarType(CarType.valueOf(choice2));
                                 carTres.displayDetails();
                                 int choice5 = 0;
                                 boolean back2 = false;
@@ -297,4 +296,4 @@ public class FinalEnums {
 
 //car = //enum.valueOf(userInput);
 
-//Sop (“Your Car Type: ” + car);
+//Sop (“Your Car Type: ” + car);             
